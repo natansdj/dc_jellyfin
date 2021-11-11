@@ -2,15 +2,16 @@ version: "3"
 services:
   jellyfin:
     image: jellyfin/jellyfin:10.6.4
-    user: 125:132
+    user: 1000:1000
     group_add:
       - 1000
       - video
-      - 226
     network_mode: "host"
     restart: always
     container_name: jellyfin
     environment:
+      - PUID=1000
+      - PGID=1000
       - JELLYFIN_CACHE_DIR=/var/cache/jellyfin
       - JELLYFIN_CONFIG_DIR=/etc/jellyfin
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
@@ -20,7 +21,7 @@ services:
       - /var/cache/jellyfin:/var/cache/jellyfin
       - /var/lib/jellyfin:/var/lib/jellyfin
       - /var/log/jellyfin:/var/log/jellyfin
-      - /media/a407/NthWD4:/media/a407/NthWD4
+      - /media/a407/NTHWD4:/media/a407/NTHWD4
       - /media/a407/NTHWD1:/media/a407/NTHWD1
     devices:
       # VAAPI Devices
