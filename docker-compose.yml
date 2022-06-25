@@ -24,8 +24,8 @@ services:
       - /var/cache/jellyfin:/var/cache/jellyfin
       - /var/lib/jellyfin:/var/lib/jellyfin
       - /var/log/jellyfin:/var/log/jellyfin
-      - /media/a407/NTHWD4:/media/a407/NTHWD4
-      - /media/a407/NTHWD1:/media/a407/NTHWD1
+      - voldata1:/media/a407/NTHWD4
+      - voldata2:/media/a407/NTHWD1
     devices:
       # VAAPI Devices
       - /dev/dri/renderD128:/dev/dri/renderD128
@@ -37,3 +37,17 @@ services:
         reservations:
           devices:
           - capabilities: [gpu]
+
+volumes:
+  voldata1:
+    driver: local
+    driver_opts:
+      type: bind
+      device: /media/a407/NTH_NAS_1
+      o: bind
+  voldata2:
+    driver: local
+    driver_opts:
+      type: bind
+      device: /media/a407/NTHWD1
+      o: bind
