@@ -1,0 +1,1 @@
+jellyfin configuration for local
