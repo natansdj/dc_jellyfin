@@ -43,11 +43,11 @@ volumes:
     driver: local
     driver_opts:
       type: bind
-      device: /media/a407/NTH_NAS_1
+      device: /media/nuc14/NTH_NAS_1
       o: bind
   voldata2:
     driver: local
     driver_opts:
       type: bind
-      device: /media/a407/NTHWD1
+      device: /media/nuc14/NTHWD1
       o: bind
