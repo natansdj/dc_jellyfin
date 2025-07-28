@@ -1,28 +1,33 @@
 services:
   jellyfin:
     image: jellyfin/jellyfin:10.10
+    # image: lscr.io/linuxserver/jellyfin:10.10.7
     # image: lscr.io/linuxserver/jellyfin:latest
     user: 1000:1000
     group_add:
       - 1000
-      - 109
+      - 992
       - video
     # network_mode: "host"
     networks:
       default:
         ipv4_address: 172.18.0.150
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     ports:
       - 8096:8096
       - 8920:8920 #optional
       - 7359:7359/udp #optional
       - 1900:1900/udp #optional
+    mem_limit: 2g
     restart: unless-stopped
     container_name: jellyfin
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Jakarta
-      - JELLYFIN_PublishedServerUrl=http://192.168.43.150 #optional
+      - JELLYFIN_PublishedServerUrl=http://192.168.43.150 #optional - alternative address used for autodiscovery
       - JELLYFIN_CACHE_DIR=/var/cache/jellyfin
       - JELLYFIN_CONFIG_DIR=/etc/jellyfin
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
@@ -36,13 +41,8 @@ services:
       - voldata2:/media/a407/NTHWD1
     devices:
       - /dev/dri:/dev/dri
-      # - /dev/dri/card1:/dev/dri/card1
-      # - /dev/dri/renderD128:/dev/dri/renderD128
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #       - capabilities: [gpu]
+      - /dev/dri/card1:/dev/dri/card1
+      - /dev/dri/renderD128:/dev/dri/renderD128
 
 volumes:
   voldata1:
