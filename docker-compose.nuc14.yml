@@ -33,10 +33,10 @@ services:
       - JELLYFIN_DATA_DIR=/var/lib/jellyfin
       - JELLYFIN_LOG_DIR=/var/log/jellyfin
     volumes:
-      - /home/lxc/jellyfin_data/etc:/etc/jellyfin
-      - /home/lxc/jellyfin_data/cache:/var/cache/jellyfin
-      - /home/lxc/jellyfin_data/lib:/var/lib/jellyfin
-      - /home/lxc/jellyfin_data/log:/var/log/jellyfin
+      - /mnt/lxc/jellyfin_data/etc:/etc/jellyfin
+      - /mnt/lxc/jellyfin_data/cache:/var/cache/jellyfin
+      - /mnt/lxc/jellyfin_data/lib:/var/lib/jellyfin
+      - /mnt/lxc/jellyfin_data/log:/var/log/jellyfin
       - voldata1:/media/a407/NTHWD4
       - voldata2:/media/a407/NTHWD1
     devices:
