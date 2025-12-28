@@ -8,10 +8,10 @@ services:
       - 1000
       - 992
       - video
-    # network_mode: "host"
-    networks:
-      default:
-        ipv4_address: 172.18.0.150
+    network_mode: "host"
+    # networks:
+    #   default:
+    #     ipv4_address: 172.18.0.150
     # Optional - may be necessary for docker healthcheck to pass if running in host network mode
     extra_hosts:
       - 'host.docker.internal:host-gateway'
@@ -58,7 +58,7 @@ volumes:
       device: /media/nuc14/NTH_NAS_1/_tmp
       o: bind
 
-networks:
-  default:
-    external: true
-    name: dev
+# networks:
+#   default:
+#     external: true
+#     name: dev
